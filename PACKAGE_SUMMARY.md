@@ -1,8 +1,8 @@
-# 🎉 Project Complete: Snowflake RBAC Framework
+# 🎉 Project Complete: SnowGuard Framework
 
 ## ✅ What Has Been Created
 
-Your complete Snowflake RBAC Framework package is ready in:
+Your complete SnowGuard Framework package is ready in:
 ```
 📁 c:\Users\atadas\Downloads\Eligibility\snowflake-role-based-access\
 ```
@@ -363,7 +363,7 @@ After implementation, organizations typically see:
 
 ## 🎉 Summary
 
-You now have a **complete, production-ready Snowflake RBAC Framework** with:
+You now have a **complete, production-ready SnowGuard Framework** with:
 
 ✨ **Interactive Streamlit Dashboard** - Beautiful, user-friendly UI  
 ✨ **5000+ Word Article** - Comprehensive approach and business case  

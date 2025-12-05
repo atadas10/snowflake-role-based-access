@@ -1,5 +1,5 @@
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║                   RBAC FRAMEWORK - IMPLEMENTATION COMPLETE                   ║
+║                      SNOWGUARD - IMPLEMENTATION COMPLETE                     ║
 ║                                                                              ║
 ║  Your handbook-aligned, database-backed, Streamlit-powered RBAC solution    ║
 ║                                                                              ║

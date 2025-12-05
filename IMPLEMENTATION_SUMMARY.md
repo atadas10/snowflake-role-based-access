@@ -1,4 +1,4 @@
-# RBAC Framework - Complete Implementation Summary
+# SnowGuard Framework - Complete Implementation Summary
 
 ## ✅ What's Been Updated
 
@@ -22,7 +22,7 @@
 ### New Files:
 
 #### **INSTALL_RBAC_METADATA.ddl** (Master Installation)
-- Complete setup script for all RBAC framework objects
+- Complete setup script for all SnowGuard framework objects
 - Creates database `ADW_CONTROL` and schema `audit`
 - Includes sample data (commented out)
 - One-stop shop for complete installation
@@ -103,7 +103,7 @@
 
 ## 4. **Quick Start Instructions**
 
-### Install RBAC Framework in Snowflake
+### Install SnowGuard Framework in Snowflake
 
 ```sql
 -- 1. Copy contents of INSTALL_RBAC_METADATA.ddl

@@ -1,4 +1,4 @@
-# RBAC Framework - GitLab Pages Setup
+# SnowGuard Framework - GitLab Pages Setup
 
 ## 🚀 Live Site
 Your site will be available at: `https://yourusername.gitlab.io/your-repo-name`
@@ -20,7 +20,7 @@ Your site will be available at: `https://yourusername.gitlab.io/your-repo-name`
 cd snowflake-role-based-access
 git init
 git add .
-git commit -m "Initial commit - RBAC Framework"
+git commit -m "Initial commit - SnowGuard Framework"
 git remote add origin https://gitlab.com/yourusername/your-repo-name.git
 git push -u origin main
 ```
@@ -72,4 +72,4 @@ Every time you push to `main` branch:
 
 ---
 
-**Live Site Example**: After setup, visitors can browse your entire RBAC Framework documentation as a beautiful website with the professional landing page as the entry point.
+**Live Site Example**: After setup, visitors can browse your entire SnowGuard Framework documentation as a beautiful website with the professional landing page as the entry point.

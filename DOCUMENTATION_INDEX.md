@@ -1,4 +1,4 @@
-# 📑 RBAC Framework - Complete Documentation Index
+# 📁 SnowGuard Framework - Complete Documentation Index
 
 ## 🎯 Start Here
 

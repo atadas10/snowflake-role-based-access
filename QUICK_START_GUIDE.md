@@ -1,8 +1,8 @@
-# 🎯 RBAC Framework - Complete Setup & Usage Guide
+# 🎯 SnowGuard - Complete Setup & Usage Guide
 
 ## 📋 Executive Summary
 
-You now have a **complete, production-ready Snowflake RBAC Framework** with:
+You now have a **complete, production-ready SnowGuard Framework** with:
 - ✅ **Handbook Documentation** - Comprehensive architecture guide
 - ✅ **Streamlit UI** - Interactive management dashboard  
 - ✅ **Database DDL** - Ready-to-deploy Snowflake scripts

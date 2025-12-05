@@ -1,4 +1,4 @@
-# Snowflake RBAC Framework - Interactive Dashboard
+# SnowGuard - Interactive Dashboard
 
 > **Transform Permission Management** | Metadata-Driven | Fully Auditable | Enterprise-Grade
 
@@ -8,7 +8,7 @@ A comprehensive, production-ready framework for managing Role-Based Access Contr
 
 ## 🎯 What Is This?
 
-The Snowflake RBAC Framework provides:
+SnowGuard provides:
 
 ✅ **Metadata-Driven Permission Management** - Define permissions once, execute consistently  
 ✅ **Automated Grant/Revoke Operations** - Bulk permission management at scale  

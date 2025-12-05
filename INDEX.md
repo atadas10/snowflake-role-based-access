@@ -1,4 +1,4 @@
-# Snowflake RBAC Framework - Complete Package
+# SnowGuard Framework - Complete Package
 
 ## 📦 What You've Got
 
@@ -328,7 +328,7 @@ After implementation, expect:
 
 ## 🎉 You're All Set!
 
-Everything you need to implement the Snowflake RBAC Framework is included:
+Everything you need to implement the SnowGuard Framework is included:
 
 ✅ **Approach Article** - Understand the "why"  
 ✅ **Installation Guide** - Know the "how"  
