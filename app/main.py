@@ -1,5 +1,5 @@
 """
-Snowflake RBAC Framework - Interactive Management Dashboard
+SnowGuard - Interactive Management Dashboard
 A comprehensive UI for managing Role-Based Access Control in Snowflake
 """
 
@@ -12,7 +12,7 @@ import json
 
 # Page configuration
 st.set_page_config(
-    page_title="Snowflake RBAC Manager",
+    page_title="SnowGuard Manager",
     page_icon="🔐",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -226,7 +226,7 @@ if 'audit_log' not in st.session_state:
         })
 
 # Sidebar Navigation
-st.sidebar.markdown("# 🔐 Role Manager")
+st.sidebar.markdown("# 🔐 SnowGuard")
 st.sidebar.markdown("---")
 
 page = st.sidebar.radio(
