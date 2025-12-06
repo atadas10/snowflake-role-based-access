@@ -3,4 +3,4 @@ pandas
 plotly==5.18.0
 snowflake-connector-python
 snowflake-snowpark-python
-numpy==1.24.3
+numpy
