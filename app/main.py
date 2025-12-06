@@ -46,6 +46,10 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# Track Snowflake availability and errors so we can show a single notice in the UI
+if 'snowflake_available' not in st.session_state:
+    st.session_state['snowflake_available'] = True
+    st.session_state['snowflake_error'] = ''
 # Initialize session state
 # Data sourced from audit.adw_rbac_metadata table (as per RBAC_Framework_Handbook.md)
 if 'metadata' not in st.session_state:
@@ -110,17 +114,21 @@ if 'metadata' not in st.session_state:
 
         # Ensure columns exist and have expected dtypes (minimal normalization)
         if not isinstance(df, pd.DataFrame) or df.empty:
-            st.warning("Metadata query returned no rows; using sample in-memory metadata.")
+            # Treat empty results as a failure to load from Snowflake so we fall back to sample data
             raise ValueError("Empty metadata from Snowflake")
 
+        # Mark Snowflake as available when the query succeeded
+        st.session_state['snowflake_available'] = True
+        st.session_state['snowflake_error'] = st.session_state.get('snowflake_error', '')
         st.session_state.metadata = df
 
     except Exception as e:
-        # Log and fall back to embedded sample data for local/demo use
-        st.warning(f"Could not load metadata from Snowflake: {e}. Using local sample dataset.")
+        # Record the error and fall back to embedded sample data for local/demo use
+        st.session_state['snowflake_available'] = False
+        st.session_state['snowflake_error'] = st.session_state.get('snowflake_error', '') + f"Metadata: {e}; "
         st.session_state.metadata = pd.DataFrame({
             'rbac_id': [1, 2, 3, 4, 5],
-            'database_name': ['ADW_PROD', 'ADW_PROD', 'ADW_PROD', 'ADW_DEV', 'ADW_DEV'],
+            'database_name': ['PROD', 'PROD', 'PROD', 'ADW_DEV', 'ADW_DEV'],
             'schema_name': ['ADS', 'ADS', 'REPORTING', 'ADS', 'REPORTING'],
             'table_name': ['T_MBR_DIM', 'T_CLM_FACT', 'V_SUMMARY', 'T_TEST_DATA', 'V_DEV_ANALYSIS'],
             'role_name': ['FIN_ANALYST_ROLE', 'FIN_ANALYST_ROLE', 'EXEC_ROLE', 'DEV_TEAM_ROLE', 'DEV_TEAM_ROLE'],
@@ -191,13 +199,17 @@ if 'audit_log' not in st.session_state:
                 cur.close()
 
         if not isinstance(audit_df, pd.DataFrame) or audit_df.empty:
-            st.warning("Audit log query returned no rows; using sample in-memory audit log.")
+            # Treat empty results as a failure so we fall back to sample audit log
             raise ValueError("Empty audit log from Snowflake")
 
+        # Mark Snowflake as available when the audit log query succeeded
+        st.session_state['snowflake_available'] = True
+        st.session_state['snowflake_error'] = st.session_state.get('snowflake_error', '')
         st.session_state.audit_log = audit_df
 
     except Exception as e:
-        st.warning(f"Could not load audit log from Snowflake: {e}. Using local sample dataset.")
+        st.session_state['snowflake_available'] = False
+        st.session_state['snowflake_error'] = st.session_state.get('snowflake_error', '') + f"AuditLog: {e}; "
         st.session_state.audit_log = pd.DataFrame({
             'log_id': [1, 2, 3, 4],
             'operation_type': ['GRANT', 'GRANT', 'DRY_RUN', 'REVOKE'],
@@ -250,6 +262,9 @@ st.sidebar.markdown("""
 if page == "📊 Dashboard":
     st.markdown('<div class="main-header">🔐 RBAC Dashboard</div>', unsafe_allow_html=True)
     st.markdown("Real-time overview of your Role-Based Access Control environment")
+    # If Snowflake wasn't configured or failed to load, show a single, friendly note
+    if not st.session_state.get('snowflake_available', True):
+        st.info("Snowflake not configured, displaying dummy data")
     
     # Key Metrics
     col1, col2, col3, col4, col5 = st.columns(5)
