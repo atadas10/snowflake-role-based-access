@@ -14,8 +14,8 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a2332 100%);
         }
         
         .container {
@@ -26,15 +26,16 @@
         
         /* Header */
         .header {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
-            padding: 1rem 0;
+            padding: 1.5rem 0;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            border-bottom: 2px solid #22c55e;
         }
         
         .nav {
@@ -46,7 +47,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #667eea;
+            color: #22c55e;
         }
         
         /* Hero Section */
@@ -54,7 +55,7 @@
             /* reduced top padding by 40% (120px -> 72px) to make blue header area narrower */
             padding: 72px 0 80px;
             text-align: center;
-            color: white;
+            color: #22c55e;
         }
         
         .hero h1 {
@@ -71,10 +72,11 @@
         
         /* Solution Section */
         .solution {
-            background: white;
+            background: #1a1a2e;
             padding: 20px 0 60px 0;
             margin-top: -40px;
             border-radius: 40px 40px 0 0;
+            border-top: 3px solid #22c55e;
         }
         
         .solution-content {
@@ -86,13 +88,13 @@
         .solution h2 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            color: #333;
+            color: #22c55e;
         }
         
         .solution p {
             font-size: 1.2rem;
             margin-bottom: 1.5rem;
-            color: #666;
+            color: #b0b0b0;
             line-height: 1.8;
         }
         
@@ -107,16 +109,18 @@
         .feature {
             text-align: center;
             padding: 2.5rem 1.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a3a2a 0%, #0d2818 100%);
             color: white;
             border-radius: 20px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.15);
+            border: 1px solid #22c55e;
         }
         
         .feature:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 20px 50px rgba(34, 197, 94, 0.3);
+            border-color: #16a34a;
         }
         
         .feature-icon {
@@ -140,7 +144,7 @@
         
         /* Use Cases */
         .use-cases {
-            background: #f8f9ff;
+            background: #0f1729;
             padding: 80px 0;
         }
         
@@ -148,7 +152,7 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            color: #333;
+            color: #22c55e;
         }
         
         .use-case-grid {
@@ -158,16 +162,18 @@
         }
         
         .use-case {
-            background: white;
+            background: #1a1a2e;
             padding: 2rem;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: transform 0.3s ease;
             text-align: center;
+            border: 1px solid #22c55e;
         }
         
         .use-case:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.2);
         }
         
         .use-case-icon {
@@ -178,19 +184,19 @@
         .use-case h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #333;
+            color: #22c55e;
         }
         
         .use-case p {
-            color: #666;
+            color: #b0b0b0;
             margin-bottom: 1.5rem;
         }
         
         .learn-more {
             display: inline-block;
             padding: 0.5rem 1rem;
-            background: #667eea;
-            color: white;
+            background: #22c55e;
+            color: #0f1729;
             text-decoration: none;
             border-radius: 25px;
             font-weight: 500;
@@ -198,12 +204,12 @@
         }
         
         .learn-more:hover {
-            background: #5a6fd8;
+            background: #16a34a;
         }
         
         /* Benefits */
         .benefits {
-            background: white;
+            background: #1a1a2e;
             padding: 80px 0;
         }
         
@@ -211,7 +217,7 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            color: #333;
+            color: #22c55e;
         }
         
         .benefit-grid {
@@ -225,7 +231,8 @@
             align-items: flex-start;
             padding: 1.5rem;
             border-radius: 15px;
-            background: #f8f9ff;
+            background: #0f1729;
+            border-left: 4px solid #22c55e;
         }
         
         .benefit-icon {
@@ -237,38 +244,41 @@
         .benefit-content h3 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
-            color: #333;
+            color: #22c55e;
         }
         
         .benefit-content p {
-            color: #666;
+            color: #b0b0b0;
             font-size: 0.9rem;
         }
         
         /* CTA Section */
         .cta {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f1729 0%, #1a2332 100%);
             padding: 80px 0;
             text-align: center;
-            color: white;
+            color: #22c55e;
+            border-top: 3px solid #22c55e;
         }
         
         .cta h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            color: #22c55e;
         }
         
         .cta p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
+            opacity: 0.8;
+            color: #b0b0b0;
         }
         
         .cta-button {
             display: inline-block;
             padding: 1rem 2rem;
-            background: white;
-            color: #667eea;
+            background: #22c55e;
+            color: #0f1729;
             text-decoration: none;
             border-radius: 30px;
             font-weight: 600;
@@ -278,29 +288,30 @@
         
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
+            background: #16a34a;
         }
         
         /* Blinking Button */
         .blink-button {
             display: inline-block;
             padding: 0.75rem 1.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: #0f1729;
             text-decoration: none;
             border-radius: 30px;
             font-weight: 600;
             font-size: 1rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             animation: blink 1.5s infinite;
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 20px rgba(34, 197, 94, 0.4);
             margin-top: 1rem;
         }
         
         .blink-button:hover {
             animation: none;
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.6);
         }
         
         @keyframes blink {
@@ -314,10 +325,11 @@
         
         /* Footer */
         .footer {
-            background: #333;
-            color: white;
+            background: #0a0e27;
+            color: #b0b0b0;
             padding: 40px 0;
             text-align: center;
+            border-top: 2px solid #22c55e;
         }
         
         .footer-links {
@@ -328,13 +340,13 @@
         }
         
         .footer-links a {
-            color: white;
+            color: #22c55e;
             text-decoration: none;
             transition: color 0.3s ease;
         }
         
         .footer-links a:hover {
-            color: #667eea;
+            color: #16a34a;
         }
         
         /* Responsive */
@@ -369,8 +381,8 @@
         <nav class="nav container">
             <div class="logo">🔐 <strong>SnowGuard</strong></div>
             <div>
-                <a href="#solution" style="text-decoration: none; color: #667eea; margin-right: 1rem;">Solution</a>
-                <a href="#benefits" style="text-decoration: none; color: #667eea;">Benefits</a>
+                <a href="#solution" style="text-decoration: none; color: #22c55e; margin-right: 1.5rem; font-weight: bold; font-size: 1.1rem;">Solution</a>
+                <a href="#benefits" style="text-decoration: none; color: #22c55e; font-weight: bold; font-size: 1.1rem;">Benefits</a>
             </div>
         </nav>
     </header>
@@ -530,7 +542,7 @@
                 <a href="app/main.py">Python Dashboard</a>
                 <a href="DOCUMENTATION_INDEX.html">All Resources</a>
             </div>
-            <p>&copy; 2025 <strong>SnowGuard</strong> by <a href="https://www.atanuconsulting.in" style="color: #667eea; text-decoration: none;">www.atanuconsulting.in</a></p>
+            <p>&copy; 2025 <strong>SnowGuard</strong> by <a href="https://www.atanuconsulting.in" style="color: #22c55e; text-decoration: none;">www.atanuconsulting.in</a></p>
         </div>
     </footer>
 </body>
