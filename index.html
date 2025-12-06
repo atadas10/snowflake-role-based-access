@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SnowGuard - Enterprise Access Control</title>
+    <title><strong>SnowGuard</strong> - Enterprise Access Control</title>
     <style>
         * {
             margin: 0;
@@ -51,7 +51,8 @@
         
         /* Hero Section */
         .hero {
-            padding: 120px 0 80px;
+            /* reduced top padding by 40% (120px -> 72px) to make blue header area narrower */
+            padding: 72px 0 80px;
             text-align: center;
             color: white;
         }
@@ -71,7 +72,7 @@
         /* Solution Section */
         .solution {
             background: white;
-            padding: 80px 0;
+            padding: 20px 0 60px 0;
             margin-top: -40px;
             border-radius: 40px 40px 0 0;
         }
@@ -84,13 +85,13 @@
         
         .solution h2 {
             font-size: 2.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             color: #333;
         }
         
         .solution p {
             font-size: 1.2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             color: #666;
             line-height: 1.8;
         }
@@ -98,38 +99,43 @@
         /* Features Grid */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(5, 1fr);
             gap: 2rem;
-            margin: 60px 0;
+            margin: 40px 0;
         }
         
         .feature {
             text-align: center;
-            padding: 2rem;
-            background: #f8f9ff;
+            padding: 2.5rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             border-radius: 20px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
         }
         
         .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
         }
         
         .feature-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
+            display: block;
         }
         
         .feature h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: #333;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: white;
+            font-weight: 700;
         }
         
         .feature p {
-            color: #666;
-            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
         
         /* Use Cases */
@@ -157,6 +163,7 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
+            text-align: center;
         }
         
         .use-case:hover {
@@ -274,6 +281,37 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
         
+        /* Blinking Button */
+        .blink-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: blink 1.5s infinite;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            margin-top: 1rem;
+        }
+        
+        .blink-button:hover {
+            animation: none;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+        }
+        
+        @keyframes blink {
+            0%, 49%, 100% {
+                opacity: 1;
+            }
+            50%, 99% {
+                opacity: 0.5;
+            }
+        }
+        
         /* Footer */
         .footer {
             background: #333;
@@ -300,6 +338,12 @@
         }
         
         /* Responsive */
+        @media (max-width: 1024px) {
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
@@ -323,7 +367,7 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav container">
-            <div class="logo">🔐 SnowGuard</div>
+            <div class="logo">🔐 <strong>SnowGuard</strong></div>
             <div>
                 <a href="#solution" style="text-decoration: none; color: #667eea; margin-right: 1rem;">Solution</a>
                 <a href="#benefits" style="text-decoration: none; color: #667eea;">Benefits</a>
@@ -334,9 +378,9 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>SnowGuard</h1>
+            <h1><strong>SnowGuard</strong></h1>
             <p class="subtitle">The Modern Approach to Enterprise Access Control</p>
-            <p style="font-size: 1.1rem; opacity: 0.8;">From Chaos to Control: Revolutionizing Permission Management</p>
+            <p style="font-size: 1.1rem; opacity: 0.8;">From Chaos to Control: Revolutionizing Permission Management with <strong>SnowGuard</strong></p>
         </div>
     </section>
 
@@ -345,8 +389,9 @@
         <div class="container">
             <div class="solution-content">
                 <h2>Our Solution</h2>
+                <a href="https://snowguard.streamlit.app/" target="_blank" class="blink-button">🚀 Open Live App</a>
                 <p>
-                    SnowGuard delivers an enterprise-class security platform that manages 
+                    <strong>SnowGuard</strong> delivers an enterprise-class security platform that manages 
                     role-based access control with metadata-driven automation and comprehensive auditing. 
                     The solution supports bulk permission management, temporal access control, and dry-run 
                     testing with complete audit trails for individual data access no matter where it is stored and used.
@@ -456,7 +501,13 @@
                         <p>Handle thousands of tables and hundreds of roles with optimized performance and filtering capabilities built for enterprise scale.</p>
                     </div>
                 </div>
-            </div>
+                <div class="benefit">
+                    <div class="benefit-icon">🎭</div>
+                    <div class="benefit-content">
+                        <h3>Compatible with Dynamic Data Masking</h3>
+                        <p>Seamlessly integrate with Snowflake's dynamic data masking policies to add an extra layer of data protection and control sensitive information access.</p>
+                    </div>
+                </div>
         </div>
     </section>
 
@@ -479,7 +530,7 @@
                 <a href="app/main.py">Python Dashboard</a>
                 <a href="DOCUMENTATION_INDEX.html">All Resources</a>
             </div>
-            <p>&copy; 2025 <a href="https://www.atanuconsulting.in" style="color: #667eea; text-decoration: none;">www.atanuconsulting.in</a></p>
+            <p>&copy; 2025 <strong>SnowGuard</strong> by <a href="https://www.atanuconsulting.in" style="color: #667eea; text-decoration: none;">www.atanuconsulting.in</a></p>
         </div>
     </footer>
 </body>

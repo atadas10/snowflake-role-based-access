@@ -51,7 +51,7 @@ if 'snowflake_available' not in st.session_state:
     st.session_state['snowflake_available'] = True
     st.session_state['snowflake_error'] = ''
 # Initialize session state
-# Data sourced from audit.adw_rbac_metadata table (as per RBAC_Framework_Handbook.md)
+# Data sourced from audit.T_RBAC_METADATA table (as per RBAC_Framework_Handbook.md)
 if 'metadata' not in st.session_state:
     # Attempt to load metadata from Snowflake; fall back to in-memory sample data on failure.
     try:
@@ -103,7 +103,7 @@ if 'metadata' not in st.session_state:
                     record_create_ts,
                     record_updated_by,
                     record_updated_ts
-                FROM audit.adw_rbac_metadata
+                FROM audit.T_RBAC_METADATA
                 -- Optionally add WHERE clauses to filter, e.g. active records only
             """
             cur = cnx.cursor()
@@ -128,19 +128,19 @@ if 'metadata' not in st.session_state:
         st.session_state['snowflake_error'] = st.session_state.get('snowflake_error', '') + f"Metadata: {e}; "
         st.session_state.metadata = pd.DataFrame({
             'rbac_id': [1, 2, 3, 4, 5],
-            'database_name': ['PROD', 'PROD', 'PROD', 'ADW_DEV', 'ADW_DEV'],
-            'schema_name': ['ADS', 'ADS', 'REPORTING', 'ADS', 'REPORTING'],
-            'table_name': ['T_MBR_DIM', 'T_CLM_FACT', 'V_SUMMARY', 'T_TEST_DATA', 'V_DEV_ANALYSIS'],
-            'role_name': ['FIN_ANALYST_ROLE', 'FIN_ANALYST_ROLE', 'EXEC_ROLE', 'DEV_TEAM_ROLE', 'DEV_TEAM_ROLE'],
+            'database_name': ['SALES_PROD', 'SALES_PROD', 'SALES_PROD', 'SALES_DEV', 'SALES_DEV'],
+            'schema_name': ['ANALYTICS', 'ANALYTICS', 'REPORTS', 'ANALYTICS', 'REPORTS'],
+            'table_name': ['T_DIM_CUSTOMER', 'T_FACT_SALES', 'T_SALES_SUMMARY', 'T_DIM_PRODUCT', 'T_INVENTORY_ANALYSIS'],
+            'role_name': ['ANALYST_ROLE', 'ANALYST_ROLE', 'MANAGER_ROLE', 'ENGINEER_ROLE', 'ENGINEER_ROLE'],
             'permission_type': ['SELECT', 'SELECT', 'SELECT', 'ALL', 'ALL'],
             'effective_start_date': [datetime(2025, 1, 1), datetime(2025, 1, 1), datetime(2025, 2, 15), datetime(2025, 3, 1), datetime(2025, 3, 1)],
             'effective_end_date': [None, None, datetime(2025, 12, 31), None, None],
             'description': [
-                'Read access for Finance analysts to member dimension',
-                'Read access to claims fact data for Finance team',
-                'Executive summary reports access until year-end',
-                'Full access for dev team testing',
-                'Full access for dev analytics'
+                'Read access for analysts to customer dimension',
+                'Read access to sales fact data for analytics team',
+                'Sales summary reports access for managers until year-end',
+                'Full access for engineers product dimension',
+                'Full access for engineers inventory analytics'
             ],
             'record_status_cd': ['A', 'A', 'A', 'A', 'A'],
             'record_created_by': ['ADMIN_USER', 'ADMIN_USER', 'ADMIN_USER', 'ADMIN_USER', 'ADMIN_USER'],
@@ -189,7 +189,7 @@ if 'audit_log' not in st.session_state:
                     record_create_ts,
                     record_updated_by,
                     record_updated_ts
-                FROM audit.adw_rbac_audit_log
+                FROM audit.T_RBAC_AUDIT_LOG
                 -- Optionally add WHERE clauses to limit rows for interactive use
             """
             cur = cnx.cursor()
@@ -213,16 +213,16 @@ if 'audit_log' not in st.session_state:
         st.session_state.audit_log = pd.DataFrame({
             'log_id': [1, 2, 3, 4],
             'operation_type': ['GRANT', 'GRANT', 'DRY_RUN', 'REVOKE'],
-            'database_name': ['ADW_PROD', 'ADW_PROD', 'ADW_DEV', 'ADW_PROD'],
-            'schema_name': ['ADS', 'REPORTING', 'ADS', 'ADS'],
-            'table_name': ['T_MBR_DIM', 'V_SUMMARY', 'T_TEST_DATA', 'T_ARCHIVED'],
-            'role_name': ['FIN_ANALYST_ROLE', 'EXEC_ROLE', 'DEV_TEAM_ROLE', 'OLD_ROLE'],
+            'database_name': ['SALES_PROD', 'SALES_PROD', 'SALES_DEV', 'SALES_PROD'],
+            'schema_name': ['ANALYTICS', 'REPORTS', 'ANALYTICS', 'ANALYTICS'],
+            'table_name': ['T_DIM_CUSTOMER', 'T_SALES_SUMMARY', 'T_DIM_PRODUCT', 'T_ORDER_HISTORY'],
+            'role_name': ['ANALYST_ROLE', 'MANAGER_ROLE', 'ENGINEER_ROLE', 'LEGACY_ROLE'],
             'permission_type': ['SELECT', 'SELECT', 'ALL', 'SELECT'],
             'sql_statement': [
-                'GRANT SELECT ON TABLE ADW_PROD.ADS.T_MBR_DIM TO ROLE FIN_ANALYST_ROLE',
-                'GRANT SELECT ON TABLE ADW_PROD.REPORTING.V_SUMMARY TO ROLE EXEC_ROLE',
-                'GRANT ALL ON TABLE ADW_DEV.ADS.T_TEST_DATA TO ROLE DEV_TEAM_ROLE',
-                'REVOKE SELECT ON TABLE ADW_PROD.ADS.T_ARCHIVED FROM ROLE OLD_ROLE'
+                'GRANT SELECT ON TABLE SALES_PROD.ANALYTICS.T_DIM_CUSTOMER TO ROLE ANALYST_ROLE',
+                'GRANT SELECT ON TABLE SALES_PROD.REPORTS.T_SALES_SUMMARY TO ROLE MANAGER_ROLE',
+                'GRANT ALL ON TABLE SALES_DEV.ANALYTICS.T_DIM_PRODUCT TO ROLE ENGINEER_ROLE',
+                'REVOKE SELECT ON TABLE SALES_PROD.ANALYTICS.T_ORDER_HISTORY FROM ROLE LEGACY_ROLE'
             ],
             'execution_status': ['SUCCESS', 'SUCCESS', 'SUCCESS', 'SUCCESS'],
             'error_message': [None, None, None, None],
