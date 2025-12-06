@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnowGuard - Enterprise Access Control</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Solution Section */
+        .solution {
+            background: white;
+            padding: 80px 0;
+            margin-top: -40px;
+            border-radius: 40px 40px 0 0;
+        }
+        
+        .solution-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .solution h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+        
+        .solution p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin: 60px 0;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9ff;
+            border-radius: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .feature p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Use Cases */
+        .use-cases {
+            background: #f8f9ff;
+            padding: 80px 0;
+        }
+        
+        .use-cases h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .use-case {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .use-case:hover {
+            transform: translateY(-5px);
+        }
+        
+        .use-case-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .use-case h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .use-case p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .learn-more {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        
+        .learn-more:hover {
+            background: #5a6fd8;
+        }
+        
+        /* Benefits */
+        .benefits {
+            background: white;
+            padding: 80px 0;
+        }
+        
+        .benefits h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .benefit {
+            display: flex;
+            align-items: flex-start;
+            padding: 1.5rem;
+            border-radius: 15px;
+            background: #f8f9ff;
+        }
+        
+        .benefit-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            margin-top: 0.2rem;
+        }
+        
+        .benefit-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .benefit-content p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #667eea;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .use-case-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">🔐 SnowGuard</div>
+            <div>
+                <a href="#solution" style="text-decoration: none; color: #667eea; margin-right: 1rem;">Solution</a>
+                <a href="#benefits" style="text-decoration: none; color: #667eea;">Benefits</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>SnowGuard</h1>
+            <p class="subtitle">The Modern Approach to Enterprise Access Control</p>
+            <p style="font-size: 1.1rem; opacity: 0.8;">From Chaos to Control: Revolutionizing Permission Management</p>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution" id="solution">
+        <div class="container">
+            <div class="solution-content">
+                <h2>Our Solution</h2>
+                <p>
+                    SnowGuard delivers an enterprise-class security platform that manages 
+                    role-based access control with metadata-driven automation and comprehensive auditing. 
+                    The solution supports bulk permission management, temporal access control, and dry-run 
+                    testing with complete audit trails for individual data access no matter where it is stored and used.
+                </p>
+                <p>
+                    These controls are recognized by industry compliance frameworks and security standards 
+                    as the best way to manage data access. As a transparent solution, the framework easily supports 
+                    enterprise use cases with minimal impact on performance and existing workflows.
+                </p>
+            </div>
+            
+            <!-- Feature Icons -->
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast</h3>
+                    <p>Deploy permissions in minutes, not days</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Easy</h3>
+                    <p>Simple UI - no SQL required</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Comprehensive</h3>
+                    <p>Configure once, audit everywhere</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Control</h3>
+                    <p>Only authorized users access data</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">☁️</div>
+                    <h3>Seamless</h3>
+                    <p>Works with any Snowflake environment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="use-cases">
+        <div class="container">
+            <h2>Use Cases</h2>
+            <div class="use-case-grid">
+                <div class="use-case">
+                    <div class="use-case-icon">👥</div>
+                    <h3>Bulk Onboarding & Offboarding</h3>
+                    <p>Streamline new hire access and contractor departures with automated bulk operations and audit trails.</p>
+                    <a href="docs/RBAC_Framework_Handbook.html#use-case-1-onboarding-new-team-members" class="learn-more">Learn More</a>
+                </div>
+                <div class="use-case">
+                    <div class="use-case-icon">📊</div>
+                    <h3>Compliance & Audit Management</h3>
+                    <p>Generate compliance reports and audit trails with one-click exports for regulatory requirements and security audits.</p>
+                    <a href="docs/RBAC_Framework_Handbook.html#use-case-3-soc-2--hipaa-audit-prep" class="learn-more">Learn More</a>
+                </div>
+                <div class="use-case">
+                    <div class="use-case-icon">⏰</div>
+                    <h3>Temporal Access Control</h3>
+                    <p>Grant time-bound permissions that automatically expire, reducing manual revocation overhead.</p>
+                    <a href="docs/RBAC_Framework_Handbook.html#effective-date-management" class="learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Benefits -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <h2>Key Benefits</h2>
+            <div class="benefit-grid">
+                <div class="benefit">
+                    <div class="benefit-icon">🔐</div>
+                    <div class="benefit-content">
+                        <h3>Easily Implement Security Controls and Mandates</h3>
+                        <p>Simple dashboard makes permission management accessible to non-technical teams while maintaining enterprise security standards.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">🔍</div>
+                    <div class="benefit-content">
+                        <h3>Quickly Enable Data Access While Meeting Regulatory Requirements</h3>
+                        <p>Dry-run capabilities and comprehensive audit logging ensure regulatory and security requirements are met without slowing down business operations.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">🛡️</div>
+                    <div class="benefit-content">
+                        <h3>Protect Data Against Access Control Risks</h3>
+                        <p>Metadata-driven approach with effective dating prevents over-privileged access and ensures principle of least privilege.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">💰</div>
+                    <div class="benefit-content">
+                        <h3>Reduce the Effort and Cost of Managing Permissions</h3>
+                        <p>Bulk operations and automated workflows reduce manual effort by 90% while eliminating human errors in permission management.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">📈</div>
+                    <div class="benefit-content">
+                        <h3>Safely Scale Data Access for Enterprise Use Cases</h3>
+                        <p>Handle thousands of tables and hundreds of roles with optimized performance and filtering capabilities built for enterprise scale.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform Your Access Control?</h2>
+            <p>Deploy SnowGuard and see immediate results in compliance, efficiency, and security.</p>
+            <a href="QUICK_START_GUIDE.html" class="cta-button">Get Started Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="README.html">Documentation</a>
+                <a href="docs/RBAC_Framework_Handbook.html">Architecture Guide</a>
+                <a href="database/INSTALL_RBAC_METADATA.ddl">Installation Script</a>
+                <a href="app/main.py">Python Dashboard</a>
+                <a href="DOCUMENTATION_INDEX.html">All Resources</a>
+            </div>
+            <p>&copy; 2025 <a href="https://www.atanuconsulting.in" style="color: #667eea; text-decoration: none;">www.atanuconsulting.in</a></p>
+        </div>
+    </footer>
+</body>
+</html>
